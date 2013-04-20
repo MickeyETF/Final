@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+         <link rel="stylesheet" href="jquery.mobile-1.2.0.min.css" />
+        <script src="https://s3.amazonaws.com/codiqa-cdn/jquery-1.7.2.min.js">
+        </script>
+		<script src="phonegap.js"></script>
+        <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		
+        
+    </head>
+    <body onload="loadingAjax();">
+        <!-- Home -->
+		
+        <div data-role="page" >
+		
+		<div data-theme="b" data-role="header">
+                <a data-role="button" href="javascript:window.location.replace('pocetna.html');" data-icon="back" data-iconpos="left" class="ui-btn-left">
+                    Nazad
+                </a>
+                <h3>
+                    Spisak ispita
+                </h3>
+            </div>
+            <div data-role="content" id="polozeni_ispiti">
+			<img id="loading-image" src="images/ajax-loader.gif"/>
+			<table id="List">
+				<thead><tr><td>RB</td><td>Naziv predmeta</td><td>Datum polaganja</td><td>Ocjena</td></tr></thead>				
+				</table>
+			</div>
+        </div>
+		<script>
+			function loadingAjax()
+			{
+				var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
+				var lozinka = window.localStorage.getItem("lozinka");
+				var adresa="http://wstest.etf.unssa.rs.ba/studenti/polozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;
+				$.ajax({
+				  //url:"http://wstest.etf.unssa.rs.ba/studenti/polozeni_ispiti/etf/931/ed448b3761b35affa0409afa2aaf09d8",
+				  url:adresa,
+				  type:"GET",
+				  crossDomain: true,
+				  dataType:"jsonp",
+				  beforeSend: function() {
+				  $("#List").hide();
+				  $("#loading-image").show();
+				   },
+				  success: function(data)
+				  {
+				   $("#loading-image").hide();
+				   $("#List").show();
+					//console.log(data);
+					//$("#polozeni_ispiti").html(JSON.stringify(data));
+					var i=1;
+					$.each(data, function(index, item)
+					{
+						 //console.log(item.Ispit.id);
+						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.datum+'</td><td>'+item.Ispit.ocjena+'</td></tr>');
+						 i++;
+					});
+				  }
+				});
+			}
+</script>
+    </body>
+</html>

@@ -39,6 +39,7 @@
 			{
 				document.addEventListener("online", onOnline, false);
 				document.addEventListener("deviceready", onDeviceReady, false);
+				alert(adresa);
 			}
 			
 		function onOnline() 
@@ -55,6 +56,7 @@
 			alert("Device on ready");
 			if(pom!=1)
 			{
+			alert("usao sam u if petlju za ispitivanje pomocne");
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 			}
 		}		

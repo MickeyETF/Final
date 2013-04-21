@@ -13,27 +13,6 @@
         </script>
 		<script src="phonegap.js"></script>
         <script src="https://s3.amazonaws.com/codiqa-cdn/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-		
-        
-    </head>
-    <body>
-        <!-- Home -->
-        <div data-role="page" >
-		<div data-theme="b" data-role="header">
-                <a data-role="button" href="javascript:window.location.replace('pocetna.html');" data-icon="back" data-iconpos="left" class="ui-btn-left">
-                    Nazad
-                </a>
-                <h3>
-                    Spisak ispita
-                </h3>
-            </div>
-            <div data-role="content" id="polozeni_ispiti">
-			<img id="loading-image" src="images/ajax-loader.gif"/>
-			<table id="List">
-				<thead><tr><td>RB</td><td>Naziv predmeta</td><td>Godina</td><td>Semestar</td></tr></thead>				
-				</table>
-			</div>
-        </div>
 		<script>
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
@@ -82,6 +61,27 @@
 				  }
 				});
 			}*/
-</script>
+</script>	
+        
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" >
+		<div data-theme="b" data-role="header">
+                <a data-role="button" href="javascript:window.location.replace('pocetna.html');" data-icon="back" data-iconpos="left" class="ui-btn-left">
+                    Nazad
+                </a>
+                <h3>
+                    Spisak ispita
+                </h3>
+            </div>
+            <div data-role="content" id="polozeni_ispiti">
+			<img id="loading-image" src="images/ajax-loader.gif"/>
+			<table id="List">
+				<thead><tr><td>RB</td><td>Naziv predmeta</td><td>Godina</td><td>Semestar</td></tr></thead>				
+				</table>
+			</div>
+        </div>
+	
     </body>
 </html>

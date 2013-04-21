@@ -4062,6 +4062,7 @@ table tr:last-child td {
 	margin:35%;
 	width:30%;
 	height:30%;
+	display:none;
 }
 
 button {

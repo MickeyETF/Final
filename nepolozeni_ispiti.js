@@ -15,6 +15,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 
     function gotFS(fileSystem) {
+    	alert("grr sam");
         fileSystem.root.getFile("prijava_ispita/nepolozeni_ispiti.json", null, gotFileEntry, fail);
     }
 

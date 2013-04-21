@@ -26,18 +26,16 @@
                 </h3>
             </div>
             <div data-role="content">
-			
                 <h4>
                     U sledeća polja upišite podatke za logovanje na InfoKiosk. Ukoliko niste
             registrovani odaberite dugme InfoKiosk.
                 </h4>
-				
                 <div data-role="fieldcontain">
                     <fieldset data-role="controlgroup">
                         <label for="korisnicko_ime">
                            Broj indeksa
                         </label>
-                        <input name="korisnicko_ime" id="korisnicko_ime" value="" type="number" />
+                        <input name="korisnicko_ime" id="korisnicko_ime" placeholder="Unesite ime.." value="" type="number" />
                     </fieldset>
                 </div>
                 <div data-role="fieldcontain">
@@ -45,7 +43,7 @@
                         <label for="lozinka">
                             Lozinka
                         </label>
-                        <input name="lozinka" id="lozinka" value="" type="password" />
+                        <input name="lozinka" id="lozinka" placeholder="Unesite lozinku.." value="" type="password" />
                     </fieldset>
                 </div>
 				<a data-role="button" data-theme="b" data-rel="dialog" href="#dialog" data-transition="pop" onclick="Enkripcija()">Unos</a>

@@ -7,10 +7,10 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Student</name>
+    <name>PrijavaIspita</name>
 
     <description>
-    Finalna verzija 1.0
+    Aplikacija za pregled korisnikovih ispita
     </description>
 
     <author href="https://build.phonegap.com" email="support@phonegap.com">

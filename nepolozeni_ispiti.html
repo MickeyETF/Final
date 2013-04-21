@@ -16,7 +16,7 @@
 		
         
     </head>
-    <body onload="onLoad();loadingAjax();">
+    <body onload="onLoad();">
         <!-- Home -->
         <div data-role="page" >
 		<div data-theme="b" data-role="header">
@@ -37,42 +37,32 @@
 		<script>
 		 function onLoad() 
 			{
-				document.addEventListener("online", onOnline, false);
 				document.addEventListener("deviceready", onDeviceReady, false);
 			}
-		var pom;
-		var adresa;
-		function onOnline() 
-			{
-			var pom=1;
-			}
-		
+			
 		function onDeviceReady() 
 		{
+			alert("on deviceready");
 			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 		}		
 		
 		function gotFS(fileSystem) 
 		{
+			alert("gotFS");
 			fileSystem.root.getFile("prijava_ispita/nepolozeni_ispiti.json", null, gotFileEntry, fail);
 		}
 
 		function gotFileEntry(fileEntry) 
 		{
+		alert("gotFileEntry");
 		adresa=fileEntry.fullPath;
 		alert("Nemate pristup net-u stoga pokusavam parsiranje iz fajla koji se nalazi na adresi "+adresa);
+		loadingAjax();
 		}
 			
 		
 		function loadingAjax()
 			{
-				if(pom==1)
-				{
-					alert("ima neta");
-					var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
-					var lozinka = window.localStorage.getItem("lozinka");
-					adresa="http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;
-				}
 				$.ajax({
 				  url:adresa,
 				  type:"GET",

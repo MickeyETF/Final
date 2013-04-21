@@ -16,7 +16,7 @@
 		
         
     </head>
-    <body onload="onLoad();">
+    <body>
         <!-- Home -->
         <div data-role="page" >
 		<div data-theme="b" data-role="header">
@@ -35,11 +35,9 @@
 			</div>
         </div>
 		<script>
-		 function onLoad() 
-			{
-				document.addEventListener("deviceready", onDeviceReady, false);
-			}
-			
+		
+		document.addEventListener("deviceready", onDeviceReady, false);
+	
 		function onDeviceReady() 
 		{
 			alert("on deviceready");

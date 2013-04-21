@@ -21,6 +21,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
     function gotFileEntry(fileEntry) {
         //fileEntry.file(gotFile, fail);
-        alert("Putanja je")
-       alert(fileEntry.fullPath);
+        alert("Putanja je");
+        var adresa=fileEntry.fullPath;
+       alert(adresa);
     }

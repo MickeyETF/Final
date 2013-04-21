@@ -44,11 +44,13 @@
 				  crossDomain: true,
 				  dataType:"jsonp",
 				  beforeSend: function() {
+				  $("#status_studenta").hide();
 				  $("#loading-image").show();
 				   },
 				  success: function(data)
 				  {
 				   $("#loading-image").hide();
+				   $("#status_studenta").show();
 					console.log(data);
 					//$("#polozeni_ispiti").html(JSON.stringify(data));
 					$.each(data, function(index, item)

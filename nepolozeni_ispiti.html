@@ -39,12 +39,12 @@
 		document.addEventListener("online", onOnline, false);
 		document.addEventListener("deviceready", onDeviceReady, false);
 				
-		
+		var pom;
 			
 		function onOnline() 
 			{
 			alert("ispitivanje online");
-			var pom=1;
+			pom=1;
 			
 			}
 		
@@ -63,6 +63,7 @@
 			var lozinka = window.localStorage.getItem("lozinka");
 			var adresa="http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;	
 			}
+			loadingAjax();
 			
 		}		
 		

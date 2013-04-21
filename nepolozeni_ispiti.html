@@ -16,7 +16,7 @@
 		<script src="nepolozeni_ispiti.js"></script>
         
     </head>
-    <body onload="loadingAjax();">
+    <body>
         <!-- Home -->
         <div data-role="page" >
 		<div data-theme="b" data-role="header">
@@ -35,11 +35,12 @@
 			</div>
         </div>
 		<script>
+		/*
 			function loadingAjax()
 			{
-				/*var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
+				var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 				var lozinka = window.localStorage.getItem("lozinka");
-				var adresa="http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;*/
+				var adresa="http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;
 				$.ajax({
 				  url:adresa,
 				  type:"GET",
@@ -64,7 +65,7 @@
 					});
 				  }
 				});
-			}
+			}*/
 </script>
     </body>
 </html>

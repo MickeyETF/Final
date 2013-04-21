@@ -37,7 +37,6 @@
 		<script>
 		 
 		document.addEventListener("online", onOnline, false);
-		document.addEventListener("deviceready", onDeviceReady, false);
 				
 		var pom;
 			
@@ -46,27 +45,7 @@
 			alert("ispitivanje online");
 			pom=1;
 			
-			}
-		
-		function onDeviceReady() 
-		{
-			alert("Device on ready");
-			alert("Pomocna je"+pom);
-			if(pom!=1)
-			{
-			alert("usao sam u if petlju za ispitivanje pomocne");
-			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-			}
-			else
-			{
-				alert("generisem adresu za online parsiranje");
-			var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
-			var lozinka = window.localStorage.getItem("lozinka");
-			var adresa="http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;	
-			}
-			loadingAjax();
-			
-		}		
+			}	
 		
 		function gotFS(fileSystem) 
 		{
@@ -88,6 +67,18 @@
 				  crossDomain: true,
 				  dataType:"jsonp",
 				  beforeSend: function() {
+				  if(pom!=1)
+					{
+					alert("usao sam u if petlju za ispitivanje pomocne");
+					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+					}
+					else
+					{
+						alert("generisem adresu za online parsiranje");
+					var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
+					var lozinka = window.localStorage.getItem("lozinka");
+					var adresa="http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;	
+					}
 				  $("#List").hide();
 				  $("#loading-image").show();
 				   },

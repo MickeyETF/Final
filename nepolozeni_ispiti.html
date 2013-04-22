@@ -16,7 +16,7 @@
 		<script src="nepolozeni_ispiti.js"></script>
         
     </head>
-    <body>
+    <body onload="UcitavanjePodataka();">
         <!-- Home -->
         <div data-role="page" >
 		<div data-theme="b" data-role="header">
@@ -27,8 +27,7 @@
                     Spisak ispita
                 </h3>
             </div>
-            <div data-role="content">
-            		<button onclick="Read();">Klikni me</button>
+            <div data-role="content" id="polozeni_ispiti">
 			<img id="loading-image" src="images/ajax-loader.gif"/>
 			<table id="List">
 				<thead><tr><td>RB</td><td>Naziv predmeta</td><td>Godina</td><td>Semestar</td></tr></thead>				
@@ -36,7 +35,18 @@
 			</div>
         </div>
 		<script>
-		/*
+			function UcitavanjePodataka()
+			{
+			if(pom==1)
+				{
+				loadingAjax();
+				}
+				else
+				{
+				parsiranjePodataka();
+				}
+			}
+			
 			function loadingAjax()
 			{
 				var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
@@ -55,18 +65,25 @@
 				  {
 				   $("#loading-image").hide();
 				   $("#List").show();
-					//console.log(data);
-					//$("#polozeni_ispiti").html(JSON.stringify(data));
 					var i=1;
 					$.each(data, function(index, item)
 					{
-						 //console.log(item.Ispit.id);
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
 						 i++;
 					});
 				  }
 				});
-			}*/
+			}
+			
+			function parsiranjePodataka()
+			{
+			var i=1;
+					$.each(nepolozeni_ispiti, function(index, item)
+					{
+						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
+						 i++;
+					});
+			}
 </script>
     </body>
 </html>

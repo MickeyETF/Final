@@ -37,12 +37,15 @@
 		<script>
 			function UcitavanjePodataka()
 			{
+			alert("ucitavanje podataka");
 			if(pom==1)
 				{
+				alert("pozivam ajax");
 				loadingAjax();
 				}
 				else
 				{
+				alert("pozivam parsiranje stringa");
 				parsiranjePodataka();
 				}
 			}

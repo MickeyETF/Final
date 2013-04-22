@@ -1,4 +1,5 @@
-			var pom=0;
+			var pom;
+			var nepolozeni_ispiti;
 			document.addEventListener("online", onOnline, false);
 			document.addEventListener("deviceready", onDeviceReady, false);
 			
@@ -30,7 +31,7 @@
         var reader = new FileReader();
         reader.onloadend = function(evt) {
            alert("Read as text");
-           var nepolozeni_ispiti=evt.target.result;
+           nepolozeni_ispiti=evt.target.result;
             alert(nepolozeni_ispiti);
         };
         reader.readAsText(file);

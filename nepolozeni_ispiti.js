@@ -5,6 +5,7 @@
 			
 	function onOnline()
 			{
+			alert("imate konekciju");
 			pom=1;
 			}
 			

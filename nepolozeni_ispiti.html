@@ -16,7 +16,7 @@
 		
         
     </head>
-    <body onload="UcitavanjePodataka();">
+    <body onload="Start();">
         <!-- Home -->
         <div data-role="page" >
 		<div data-theme="b" data-role="header">
@@ -37,9 +37,12 @@
 		<script>
 			var pom;
 var nepolozeni_ispiti;
+function Start()
+{
 document.addEventListener("online", onOnline, false);
 document.addEventListener("deviceready", onDeviceReady, false);
-
+UcitavanjePodataka();
+}
 function onOnline()
 {
 alert("imate konekciju");
@@ -78,6 +81,9 @@ pom=1;
     function fail(evt) {
         alert(evt.target.error.code);
     }
+    
+    
+    
 			function UcitavanjePodataka()
 			{
 			alert("ucitavanje podataka");

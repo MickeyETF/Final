@@ -50,12 +50,12 @@ pom=1;
     function onDeviceReady()
 	{
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-        
+        UcitavanjePodataka();
     }
 
     function gotFS(fileSystem) {
         fileSystem.root.getFile("prijava_ispita/nepolozeni_ispiti.json", null, gotFileEntry, fail);
-        UcitavanjePodataka();
+        
     }
 
     function gotFileEntry(fileEntry) {

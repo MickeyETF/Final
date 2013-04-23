@@ -134,7 +134,8 @@ pom=1;
 			function parsiranjePodataka()
 			{
 				alert ("ovde sam");
-				var json_parsed = $.parseJSON(nepolozeni_ispiti);
+				alert(nepolozeni_ispiti);
+				var json_parsed = JSON.parse(nepolozeni_ispiti);
 				alert(json_parsed);
 				alert(typeof json_parsed);
 				/*for (var u = 0; u < json_parsed.Ispit.length; u++){

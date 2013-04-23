@@ -131,17 +131,16 @@ pom=1;
 			{
 				alert("ovde sam");
 				alert(nepolozeni_ispiti);
+				var data=nepolozeni_ispiti;
 			//	var duzina=nepolozeni_ispiti.lenght;
 			//	var data=nepolozeni_ispiti.slice(1,duzina);
 				//alert(data);
 			var i=1;
-					$.each(nepolozeni_ispiti, function(index, item)
+					$.each(data, function(index, item)
 					{
-						alert(item.Ispit.naziv);
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
 						 i++;
 					});
-					 $("#List").show();
 			}
 </script>
     </body>

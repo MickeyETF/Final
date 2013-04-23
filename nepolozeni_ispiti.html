@@ -90,13 +90,15 @@ pom=1;
 			alert("ucitavanje podataka");
 			if(pom==1)
 				{
-				alert("pozivam ajax");
-				loadingAjax();
+				alert("pozivam parsiranje stringa");
+				parsiranjePodataka();
+				
 				}
 				else
 				{
-				alert("pozivam parsiranje stringa");
-				parsiranjePodataka();
+
+				alert("pozivam ajax");
+				loadingAjax();
 				}
 			}
 			
@@ -135,11 +137,17 @@ pom=1;
 				var json_parsed = $.parseJSON(nepolozeni_ispiti);
 				alert(json_parsed);
 				alert(typeof json_parsed);
-				for (var u = 0; u < json_parsed.Ispit.length; u++){
+				/*for (var u = 0; u < json_parsed.Ispit.length; u++){
 				    var ispit = json_parsed.Ispit[u];
 				    var i=u+1;
 				    $('#List').append('<tr><td>'+i+'</td><td>'+ispit.naziv+'</td><td>'+ispit.godina+'</td><td>'+ispit.semestar+'</td></tr>');
-				}
+				}*/
+				var i=1;
+				$.each(json_parsed, function(index, item)
+					{
+						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
+						 i++;
+					});
 			}
 </script>
     </body>

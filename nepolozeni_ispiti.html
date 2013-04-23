@@ -137,9 +137,10 @@ pom=1;
 			var json_parsed = $.parseJSON(json);
 			alert(typeof data);
 			alert(data);
+			alert(json_parsed);
 			$("#List").show();
 					var i=1;
-					$.each(data, function(index, item)
+					$.each(json_parsed, function(index, item)
 					{
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
 						 i++;

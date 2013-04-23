@@ -132,7 +132,8 @@ pom=1;
 			function parsiranjePodataka()
 			{
 				var json_parsed = $.parseJSON(nepolozeni_ispiti);
-				
+				alert(json_parsed);
+				alert(typeof json_parsed);
 				for (var u = 0; u < json_parsed.Ispit.length; u++){
 				    var ispit = json_parsed.Ispit[u];
 				    var i=u+1;

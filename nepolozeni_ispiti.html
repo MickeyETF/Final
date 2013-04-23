@@ -36,7 +36,7 @@
         </div>
 		<script>
 		
-		var pom;
+		var pom=0;
 		var nepolozeni_ispiti;
 
 document.addEventListener("online", onOnline, false);
@@ -131,6 +131,7 @@ pom=1;
 			
 			function parsiranjePodataka()
 			{
+				alert ("ovde sam");
 				var json_parsed = $.parseJSON(nepolozeni_ispiti);
 				alert(json_parsed);
 				alert(typeof json_parsed);

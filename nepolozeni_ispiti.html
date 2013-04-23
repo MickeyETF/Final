@@ -130,16 +130,16 @@ pom=1;
 			function parsiranjePodataka()
 			{
 				alert("ovde sam");
-				alert(typeof nepolozeni_ispiti);
 			//	var duzina=nepolozeni_ispiti.lenght;
 			//	var data=nepolozeni_ispiti.slice(1,duzina);
 				//alert(data);
-			var i=1;
-					$.each(nepolozeni_ispiti, function(index, item)
-					{
-						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
-						 i++;
-					});
+			var json_parsed = $.parseJSON(nepolozeni_ispiti);
+
+				for (var u = 0; u < json_parsed.Ispit.length; u++){
+				    var ispit = json_parsed.Ispit[u];
+				    var i=u+1;
+				    $('#List).append('<tr><td>'+i+'</td><td>'+ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+ispit.semestar+'</td></tr>');
+				}
 			}
 </script>
     </body>

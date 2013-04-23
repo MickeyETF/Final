@@ -43,10 +43,10 @@ var url = new Array();
 		url[3] = "http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+br_ind+"/"+loz;
 		
 		var file = new Array();
-		file[0] = "/nepolozeni_ispiti.txt";
-		file[1] = "/polozeni_ispiti.txt";
-		file[2] = "/ispiti_za_polaganje.txt";
-		file[3] = "/status_studenta.txt";
+		file[0] = "/nepolozeni_ispiti.json";
+		file[1] = "/polozeni_ispiti.json";
+		file[2] = "/ispiti_za_polaganje.json";
+		file[3] = "/status_studenta.json";
 		
 		for(var i=0;i<4;i++)
 		{	

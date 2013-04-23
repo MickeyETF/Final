@@ -137,6 +137,7 @@ pom=1;
 			var i=1;
 					$.each(nepolozeni_ispiti, function(index, item)
 					{
+						alert(item.Ispit.naziv);
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
 						 i++;
 					});

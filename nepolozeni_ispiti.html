@@ -118,6 +118,7 @@ pom=1;
 				  {
 				   $("#loading-image").hide();
 				   $("#List").show();
+				   alert(data);
 					var i=1;
 					$.each(data, function(index, item)
 					{
@@ -133,6 +134,7 @@ pom=1;
 			alert("ovde sam");
 			alert(nepolozeni_ispiti);
 			var data=JSON.stringify(nepolozeni_ispiti);
+			var json_parsed = $.parseJSON(json);
 			alert(typeof data);
 			alert(data);
 			$("#List").show();

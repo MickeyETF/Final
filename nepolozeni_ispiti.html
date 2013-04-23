@@ -35,8 +35,8 @@
 			</div>
         </div>
 		<script>
-			var pom;
-var nepolozeni_ispiti;
+		var pom;
+		var nepolozeni_ispiti=new Object();
 
 document.addEventListener("online", onOnline, false);
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -129,17 +129,15 @@ pom=1;
 			
 			function parsiranjePodataka()
 			{
-				alert("ovde sam");
-			//	var duzina=nepolozeni_ispiti.lenght;
-			//	var data=nepolozeni_ispiti.slice(1,duzina);
-				//alert(data);
-			var json_parsed = $.parseJSON(nepolozeni_ispiti);
-
-				for (var u = 0; u < json_parsed.Ispit.length; u++){
-				    var ispit = json_parsed.Ispit[u];
-				    var i=u+1;
-				    $('#List).append('<tr><td>'+i+'</td><td>'+ispit.naziv+'</td><td>'+ispit.godina+'</td><td>'+ispit.semestar+'</td></tr>');
-				}
+			alert("ovde sam");
+			alert(nepolozeni_ispiti);
+			$("#List").show();
+					var i=1;
+					$.each(nepolozeni, function(index, item)
+					{
+						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
+						 i++;
+					});
 			}
 </script>
     </body>

@@ -131,20 +131,13 @@ pom=1;
 			
 			function parsiranjePodataka()
 			{
-			alert("ovde sam");
-			alert(nepolozeni_ispiti);
-			var data=JSON.stringify(nepolozeni_ispiti);
-			var json_parsed = $.parseJSON(json);
-			alert(typeof data);
-			alert(data);
-			alert(json_parsed);
-			$("#List").show();
-					var i=1;
-					$.each(json_parsed, function(index, item)
-					{
-						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
-						 i++;
-					});
+				var json_parsed = $.parseJSON(nepolozeni_ispiti);
+				
+				for (var u = 0; u < json_parsed.Ispit.length; u++){
+				    var ispit = json_parsed.Ispit[u];
+				    var i=u+1;
+				    $('#List').append('<tr><td>'+i+'</td><td>'+ispit.naziv+'</td><td>'+ispit.godina+'</td><td>'+ispit.semestar+'</td></tr>');
+				}
 			}
 </script>
     </body>

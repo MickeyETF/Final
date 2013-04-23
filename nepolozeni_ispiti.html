@@ -36,7 +36,7 @@
         </div>
 		<script>
 			var pom;
-var nepolozeni_ispiti;
+var nepolozeni_ispiti="";
 
 document.addEventListener("online", onOnline, false);
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -131,8 +131,11 @@ pom=1;
 			{
 				alert("ovde sam");
 				alert(nepolozeni_ispiti);
+				var duzina=nepolozeni_ispiti.lenght;
+				var data=nepolozeni_ispiti.slice(1,duzina);
+				alert(data);
 			var i=1;
-					$.each(nepolozeni_ispiti, function(index, item)
+					$.each(data, function(index, item)
 					{
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
 						 i++;

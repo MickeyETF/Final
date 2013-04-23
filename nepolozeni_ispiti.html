@@ -36,23 +36,40 @@
         </div>
 		<script>
 		
-		var pom=0;
+		var pom;
 		var nepolozeni_ispiti;
 
 document.addEventListener("online", onOnline, false);
-document.addEventListener("deviceready", onDeviceReady, false);
-
 function onOnline()
 {
 alert("imate konekciju");
 pom=1;
+UcitavanjePodataka();
 }
 
-    function onDeviceReady()
+	function UcitavanjePodataka()
+			{
+			alert("ucitavanje podataka");
+			if(pom==1)
+				{
+				
+				alert("pozivam ajax");
+				loadingAjax();
+				
+				}
+				else
+				{
+
+				alert("pozivam parsiranje stringa");
+				Dobavljanje();
+				parsiranjePodataka();
+				}
+			}
+
+    function Dobavljanje()
 	{
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-        UcitavanjePodataka();
-    }
+    	}
 
     function gotFS(fileSystem) {
         fileSystem.root.getFile("prijava_ispita/nepolozeni_ispiti.json", null, gotFileEntry, fail);
@@ -82,54 +99,35 @@ pom=1;
     function fail(evt) {
         alert(evt.target.error.code);
     }
-    
-    
-    
-			function UcitavanjePodataka()
-			{
-			alert("ucitavanje podataka");
-			if(pom==1)
-				{
-				alert("pozivam parsiranje stringa");
-				parsiranjePodataka();
-				
-				}
-				else
-				{
 
-				alert("pozivam ajax");
-				loadingAjax();
-				}
-			}
-			
-			function loadingAjax()
+	function loadingAjax()
+	{
+		var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
+		var lozinka = window.localStorage.getItem("lozinka");
+		var adresa="http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;
+			$.ajax({
+			url:adresa,
+			 type:"GET",
+			crossDomain: true,
+			dataType:"jsonp",
+			 beforeSend: function() {
+			$("#List").hide();
+			$("#loading-image").show();
+			 },
+			success: function(data)
 			{
-				var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
-				var lozinka = window.localStorage.getItem("lozinka");
-				var adresa="http://wstest.etf.unssa.rs.ba/studenti/nepolozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;
-				$.ajax({
-				  url:adresa,
-				  type:"GET",
-				  crossDomain: true,
-				  dataType:"jsonp",
-				  beforeSend: function() {
-				  $("#List").hide();
-				  $("#loading-image").show();
-				   },
-				  success: function(data)
-				  {
-				   $("#loading-image").hide();
-				   $("#List").show();
-				   alert(data);
-					var i=1;
-					$.each(data, function(index, item)
-					{
+			  $("#loading-image").hide();
+			 $("#List").show();
+			alert(data);
+			var i=1;
+				$.each(data, function(index, item)
+				{
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
 						 i++;
-					});
-				  }
 				});
 			}
+			});
+		}
 			
 			function parsiranjePodataka()
 			{

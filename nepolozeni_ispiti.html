@@ -132,10 +132,12 @@ pom=1;
 			{
 			alert("ovde sam");
 			alert(nepolozeni_ispiti);
-			alert(typeof nepolozeni_ispiti)
+			var data=JSON.stringify(nepolozeni_ispiti);
+			alert(typeof data);
+			alert(data);
 			$("#List").show();
 					var i=1;
-					$.each(nepolozeni_ispiti, function(index, item)
+					$.each(data, function(index, item)
 					{
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
 						 i++;

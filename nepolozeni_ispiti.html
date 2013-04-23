@@ -115,7 +115,6 @@ pom=1;
 				   },
 				  success: function(data)
 				  {
-				  	alert(typeof data);
 				   $("#loading-image").hide();
 				   $("#List").show();
 					var i=1;
@@ -132,7 +131,7 @@ pom=1;
 			{
 				alert("ovde sam");
 				alert(typeof nepolozeni_ispiti);
-				var data=JSON.stringify(nepolozeni_ispiti);
+				var data=$.parseJSON(nepolozeni_ispiti);
 				alert(data);
 				alert(typeof data);
 			//	var duzina=nepolozeni_ispiti.lenght;

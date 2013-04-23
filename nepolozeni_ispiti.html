@@ -59,10 +59,8 @@ UcitavanjePodataka();
 				}
 				else
 				{
-
 				alert("pozivam parsiranje stringa");
 				Dobavljanje();
-				parsiranjePodataka();
 				}
 			}
 
@@ -94,6 +92,7 @@ UcitavanjePodataka();
             alert(nepolozeni_ispiti);
         };
         reader.readAsText(file);
+        parsiranjePodataka();
     }
 
     function fail(evt) {

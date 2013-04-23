@@ -131,14 +131,11 @@ pom=1;
 			{
 				alert("ovde sam");
 				alert(typeof nepolozeni_ispiti);
-				var data=$.parseJSON(nepolozeni_ispiti);
-				alert(data);
-				alert(typeof data);
 			//	var duzina=nepolozeni_ispiti.lenght;
 			//	var data=nepolozeni_ispiti.slice(1,duzina);
 				//alert(data);
 			var i=1;
-					$.each(data, function(index, item)
+					$.each(nepolozeni_ispiti, function(index, item)
 					{
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
 						 i++;

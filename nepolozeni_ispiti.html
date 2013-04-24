@@ -36,38 +36,39 @@
         </div>
 		<script>
 		
-		var pom;
-		var nepolozeni_ispiti;
+var pom;
+var nepolozeni_ispiti;
+ function onLoad()
+ {
+ 	document.addEventListener("online", onOnline, false);
+        document.addEventListener("deviceready", onDeviceReady, false);
+ }
 
-document.addEventListener("online", onOnline, false);
+
+
+
 function onOnline()
 {
 alert("imate konekciju");
 pom=1;
-UcitavanjePodataka();
 }
 
-	function UcitavanjePodataka()
-			{
-			alert("ucitavanje podataka");
-			if(pom==1)
-				{
-				
-				alert("pozivam ajax");
-				loadingAjax();
-				
-				}
-				else
-				{
-				alert("pozivam parsiranje stringa");
-				Dobavljanje();
-				}
-			}
-
-    function Dobavljanje()
+function onDeviceReady()
 	{
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-    	}
+	alert("ucitavanje podataka");
+		if(pom==1)
+			{		
+			alert("pozivam ajax");
+			loadingAjax();	
+			}
+			else
+			{
+			alert("pozivam parsiranje stringa");
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+			parsiranjePodataka();
+			}
+	}
+       
 
     function gotFS(fileSystem) {
         fileSystem.root.getFile("prijava_ispita/nepolozeni_ispiti.json", null, gotFileEntry, fail);
@@ -92,7 +93,6 @@ UcitavanjePodataka();
             alert(nepolozeni_ispiti);
         };
         reader.readAsText(file);
-        parsiranjePodataka();
     }
 
     function fail(evt) {

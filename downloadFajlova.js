@@ -14,7 +14,6 @@ function onDeviceReady()
 {
 	if(pom==1)
 	{
-	    alert("Osvjezava se baza podataka");
 	    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 	    if (korisnicko_ime != null && lozinka != null) {
 	     downloadFile(korisnicko_ime, lozinka);

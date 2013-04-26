@@ -1,7 +1,15 @@
 window.appRootDirName = "prijava_ispita";
+document.addEventListener("online", onOnline, false);
 document.addEventListener("deviceready", onDeviceReady, false);
 var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 var lozinka = window.localStorage.getItem("lozinka");
+var pom;
+
+function onOnline()
+            {
+            pom=1;
+            }
+            
 function onDeviceReady() 
 {
 	if(pom==1)

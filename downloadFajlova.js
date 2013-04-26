@@ -29,7 +29,7 @@ alert("provjera pristupa serveru");
 			{
 			OsvjeziBazu();
 			}	
-			},		
+			}		
 			});
 }		
 function OsvjeziBazu()

@@ -6,6 +6,10 @@ function onOnline()
             {
             		alert("pokusavam update");
 			ProvjeraPristupaServeru();
+			if(korisnicko_ime!=null && lozinka!=null)
+			{
+		    	window.location.replace('pocetna.html');
+		   	}
             }
 			
 function ProvjeraPristupaServeru()

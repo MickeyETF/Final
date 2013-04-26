@@ -50,7 +50,12 @@ alert("provjera pristupa serveru");
 					  alert("osvjezavam bazu");
 					  downloadFile(korisnicko_ime,lozinka);
 					  }
-				  }
+				  },
+					error: function (request,error) 
+					{
+					alert(request);
+					alert(error);
+					}
 				});
 }		
 

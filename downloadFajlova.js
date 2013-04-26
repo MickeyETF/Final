@@ -16,12 +16,8 @@ function ProvjeraPristupaServeru()
 		timeout:15000,
 		crossDomain: true,
 		dataType:"jsonp",
-		beforeSend: function() {
-			$("#loading-image").show();
-		},
 		success: function(data)
 			{
-			$("#loading-image").hide();
 			if(data!="")
 			{
 			OsvjeziBazu();

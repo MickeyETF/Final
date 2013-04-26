@@ -8,9 +8,11 @@ var pop;
 function onOnline()
             {
             	pom=1;
+            	alert("pom="+pom);
             	if (korisnicko_ime != null && lozinka != null)
             	{
 	        pop=1;
+	        alert("pop="+pop);
     		}
             	
             }
@@ -19,8 +21,10 @@ function onDeviceReady()
 {
 	if(pop==1)
 	{
+		alert("usao u petlju sa validnim podacima");
 		if(pom==1)
-		{	
+		{
+		alert("usao u petlju sa konn");
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 		ProvjeraPristupaServeru();
 		}
@@ -33,10 +37,11 @@ function ProvjeraPristupaServeru()
 {
 alert("provjera pristupa serveru");
     adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+korisnicko_ime+"/"+lozinka;
+    alert(adresa);
 		$.ajax({
 		 url:adresa,
 		type:"GET",
-		timeout:3000,
+		timeout:7000,
 		crossDomain: true,
 		dataType:"jsonp",
 		success: function(data)

@@ -2,13 +2,33 @@ window.appRootDirName = "prijava_ispita";
 var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 var lozinka = window.localStorage.getItem("lozinka");
 document.addEventListener("online", onOnline, false);
-
+document.addEventListener("deviceready", onDeviceReady, false);
+var pom;
+var pop;
 function onOnline()
             {
-            		alert("pokusavam update");
-			ProvjeraPristupaServeru();
+            	pom=1;
+            	if (korisnicko_ime != null && lozinka != null)
+            	{
+	        pop=1;
+    		}
+            	
             }
-			
+
+function onDeviceReady() 
+{
+	if(pop==1)
+	{
+		if(pom==1)
+		{	
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+		ProvjeraPristupaServeru();
+		}
+	        window.location.replace('pocetna.html');	    		
+	}
+
+}
+
 function ProvjeraPristupaServeru()
 {
 alert("provjera pristupa serveru");
@@ -24,20 +44,12 @@ alert("provjera pristupa serveru");
 			alert("uspio sam prustupiti");
 			if(data!="")
 			{
-			OsvjeziBazu();
+			alert("osvjezava se baza");
+			downloadFile(korisnicko_ime, lozinka);
 			}	
 			}		
 			});
 }		
-function OsvjeziBazu()
- {
-    alert("Osvjezava se baza podataka");
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-    if (korisnicko_ime != null && lozinka != null) {
-        downloadFile(korisnicko_ime, lozinka);
-        window.location.replace('pocetna.html');
-    }
-}
 
 function fail() {
     //alert("failed to get filesystem");

@@ -1,7 +1,7 @@
 window.appRootDirName = "prijava_ispita";
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("online", onOnline, false);
  
-function onDeviceReady() {
+function onOnline() {
 //alert("device is ready");
 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");

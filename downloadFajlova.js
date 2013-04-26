@@ -1,14 +1,16 @@
 window.appRootDirName = "prijava_ispita";
 document.addEventListener("online", onOnline, false);
+var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
+var lozinka = window.localStorage.getItem("lozinka");
 function onOnline()
             {
+            		alert("pokusavam update");
 			ProvjeraPristupaServeru();
             }
 			
 function ProvjeraPristupaServeru()
 {
-    var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
-    var lozinka = window.localStorage.getItem("lozinka");
+alert("provjera pristupa serveru");
     adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+user+"/"+pass;
 		$.ajax({
 		 url:adresa,
@@ -29,9 +31,6 @@ function OsvjeziBazu()
  {
     alert("Osvjezava se baza podataka");
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-    var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
-    var lozinka = window.localStorage.getItem("lozinka");
-    var md5_lozinka = "";
     if (korisnicko_ime != null && lozinka != null) {
         downloadFile(korisnicko_ime, lozinka);
         window.location.replace('pocetna.html');

@@ -11,7 +11,7 @@ function onOnline()
 function ProvjeraPristupaServeru()
 {
 alert("provjera pristupa serveru");
-    adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+user+"/"+pass;
+    adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+korisnicko_ime+"/"+lozinka;
 		$.ajax({
 		 url:adresa,
 		type:"GET",
@@ -20,6 +20,7 @@ alert("provjera pristupa serveru");
 		dataType:"jsonp",
 		success: function(data)
 			{
+				alert("uspio sam prustupiti");
 			if(data!="")
 			{
 			OsvjeziBazu();

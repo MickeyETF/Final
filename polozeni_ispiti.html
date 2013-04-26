@@ -37,13 +37,74 @@
 			</div>
         </div>
 		<script>
+		var pom;
+            var polozeni_ispiti;
+             function onLoad()
+             {
+             	document.addEventListener("online", onOnline, false);
+                document.addEventListener("deviceready", onDeviceReady, false);
+             }
+            
+            
+            
+            
+            function onOnline()
+            {
+            alert("imate konekciju");
+            pom=1;
+            }
+            
+            function onDeviceReady()
+            	{
+            	alert("odluka da li se poziva ajax ili se parsira string");
+            		if(pom==1)
+            			{		
+            			alert("pozivam ajax");
+            			loadingAjax();	
+            			}
+            			else
+            			{
+            			alert("pozivam parsiranje stringa");
+            			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+            			parsiranjePodataka();
+            			}
+            	}
+                   
+            
+                function gotFS(fileSystem) {
+                    fileSystem.root.getFile("prijava_ispita/polozeni_ispiti.json", null, gotFileEntry, fail);
+                    
+                }
+            
+                function gotFileEntry(fileEntry) {
+                    fileEntry.file(gotFile, fail);
+                }
+            
+            
+                function gotFile(file)
+                {
+                    readAsText(file);
+                }
+            
+                function readAsText(file) {
+                    var reader = new FileReader();
+                    reader.onloadend = function(evt) {
+                       alert("Read as text");
+                       polozeni_ispiti=evt.target.result;
+                    };
+                    reader.readAsText(file);
+                }
+            
+                function fail(evt) {
+                    alert(evt.target.error.code);
+                }
+				
 			function loadingAjax()
 			{
 				var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 				var lozinka = window.localStorage.getItem("lozinka");
 				var adresa="http://wstest.etf.unssa.rs.ba/studenti/polozeni_ispiti/etf/"+korisnicko_ime+"/"+lozinka;
 				$.ajax({
-				  //url:"http://wstest.etf.unssa.rs.ba/studenti/polozeni_ispiti/etf/931/ed448b3761b35affa0409afa2aaf09d8",
 				  url:adresa,
 				  type:"GET",
 				  crossDomain: true,
@@ -56,18 +117,25 @@
 				  {
 				   $("#loading-image").hide();
 				   $("#List").show();
-					//console.log(data);
-					//$("#polozeni_ispiti").html(JSON.stringify(data));
 					var i=1;
 					$.each(data, function(index, item)
 					{
-						 //console.log(item.Ispit.id);
 						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.datum+'</td><td>'+item.Ispit.ocjena+'</td></tr>');
 						 i++;
 					});
 				  }
 				});
 			}
+			function parsiranjePodataka()
+            			{
+            				var json_parsed = eval('(' + polozeni_ispiti + ')');
+            				var i=1;
+            				$.each(data, function(index, item)
+								{
+									 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.datum+'</td><td>'+item.Ispit.ocjena+'</td></tr>');
+									 i++;
+								});
+            			}
 </script>
     </body>
 </html>

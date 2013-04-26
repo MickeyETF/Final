@@ -1,7 +1,36 @@
 window.appRootDirName = "prijava_ispita";
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
+document.addEventListener("online", onOnline, false);
+function onOnline()
+            {
+			ProvjeraPristupaServeru();
+            }
+			
+function ProvjeraPristupaServeru()
+{
+    var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
+    var lozinka = window.localStorage.getItem("lozinka");
+    adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+user+"/"+pass;
+		$.ajax({
+		 url:adresa,
+		type:"GET",
+		timeout:15000,
+		crossDomain: true,
+		dataType:"jsonp",
+		beforeSend: function() {
+			$("#loading-image").show();
+		},
+		success: function(data)
+			{
+			$("#loading-image").hide();
+			if(data!="")
+			{
+			OsvjeziBazu();
+			}	
+			},		
+			});
+}		
+function OsvjeziBazu()
+ {
     alert("Osvjezava se baza podataka");
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
     var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");

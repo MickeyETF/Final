@@ -32,13 +32,74 @@
 			<div id="status_studenta"></div>
         </div>
 		<script>
+			var pom;
+            var status_studenta;
+             function onLoad()
+             {
+             	document.addEventListener("online", onOnline, false);
+                document.addEventListener("deviceready", onDeviceReady, false);
+             }
+            
+            
+            
+            
+            function onOnline()
+            {
+            alert("imate konekciju");
+            pom=1;
+            }
+            
+            function onDeviceReady()
+            	{
+            	alert("odluka da li se poziva ajax ili se parsira string");
+            		if(pom==1)
+            			{		
+            			alert("pozivam ajax");
+            			loadingAjax();	
+            			}
+            			else
+            			{
+            			alert("pozivam parsiranje stringa");
+            			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+            			parsiranjePodataka();
+            			}
+            	}
+                   
+            
+                function gotFS(fileSystem) {
+                    fileSystem.root.getFile("prijava_ispita/status_studenta.json", null, gotFileEntry, fail);
+                    
+                }
+            
+                function gotFileEntry(fileEntry) {
+                    fileEntry.file(gotFile, fail);
+                }
+            
+            
+                function gotFile(file)
+                {
+                    readAsText(file);
+                }
+            
+                function readAsText(file) {
+                    var reader = new FileReader();
+                    reader.onloadend = function(evt) {
+                       alert("Read as text");
+                       status_studenta=evt.target.result;
+
+                    };
+                    reader.readAsText(file);
+                }
+            
+                function fail(evt) {
+                    alert(evt.target.error.code);
+                }
 			function loadingAjax()
 			{
 				var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 				var lozinka = window.localStorage.getItem("lozinka");
 				var adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+korisnicko_ime+"/"+lozinka;
 				$.ajax({
-				  //url:"http://wstest.etf.unssa.rs.ba/studenti/status/etf/931/ed448b3761b35affa0409afa2aaf09d8",
 				  url:adresa,
 				  type:"GET",
 				  crossDomain: true,
@@ -51,8 +112,6 @@
 				  {
 				   $("#loading-image").hide();
 				    $("#status_studenta").show();
-					console.log(data);
-					//$("#polozeni_ispiti").html(JSON.stringify(data));
 					$.each(data, function(index, item)
 					{
 						 $('#status_studenta').append('<h4>'+ item.Student.ime+" "+"("+item.Student.ime_rod+")"+" "+item.Student.prezime +'</h4>'+'<br/>'+'<h5>Smjer:'+item.Student.smjer+'</h5>'+'<h5>Status:'+item.Student.status+'</h5>'+'<h5>Finansiranje:'+item.Student.finansiranje+'</h5>');
@@ -60,6 +119,14 @@
 				  }
 				});
 			}
+			function parsiranjePodataka()
+            			{
+            				var json_parsed = eval('(' + status_studenta + ')');
+            				$.each(data, function(index, item)
+							{
+								 $('#status_studenta').append('<h4>'+ item.Student.ime+" "+"("+item.Student.ime_rod+")"+" "+item.Student.prezime +'</h4>'+'<br/>'+'<h5>Smjer:'+item.Student.smjer+'</h5>'+'<h5>Status:'+item.Student.status+'</h5>'+'<h5>Finansiranje:'+item.Student.finansiranje+'</h5>');
+							});
+            			}
 </script>
     </body>
 </html>

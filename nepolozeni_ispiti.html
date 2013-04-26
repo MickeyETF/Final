@@ -93,7 +93,7 @@
                     reader.onloadend = function(evt) {
                        alert("Read as text");
                        nepolozeni_ispiti=evt.target.result;
-                        alert(nepolozeni_ispiti);
+
                     };
                     reader.readAsText(file);
                 }
@@ -136,7 +136,7 @@
             				var i=1;
             				$.each(json_parsed, function(index, item)
             					{
-            						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.						Ispit.semestar+'</td></tr>');
+            						 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.godina+'</td><td>'+item.Ispit.semestar+'</td></tr>');
             						 i++;
             					});
             			}

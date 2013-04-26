@@ -130,7 +130,7 @@
             			{
             				var json_parsed = eval('(' + polozeni_ispiti + ')');
             				var i=1;
-            				$.each(data, function(index, item)
+            				$.each(json_parsed, function(index, item)
 								{
 									 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td>'+item.Ispit.datum+'</td><td>'+item.Ispit.ocjena+'</td></tr>');
 									 i++;

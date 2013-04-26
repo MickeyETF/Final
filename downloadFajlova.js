@@ -36,24 +36,22 @@ function onDeviceReady()
 function ProvjeraPristupaServeru()
 {
 alert("provjera pristupa serveru");
-    adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+korisnicko_ime+"/"+lozinka;
-    alert(adresa);
-		$.ajax({
-		 url:adresa,
-		type:"GET",
-		timeout:7000,
-		crossDomain: true,
-		dataType:"jsonp",
-		success: function(data)
-			{
-			alert("uspio sam prustupiti");
-			if(data!="")
-			{
-			alert("osvjezava se baza");
-			downloadFile(korisnicko_ime, lozinka);
-			}	
-			}		
-			});
+   var adresa="http://wstest.etf.unssa.rs.ba/studenti/status/etf/"+korisnicko_ime+"/"+lozinka;
+				$.ajax({
+				  url:adresa,
+				  type:"GET",
+				  crossDomain: true,
+				  dataType:"jsonp",
+				  success: function(data)
+				  {
+					  alert("uspio sam");
+					  if(data!="")
+					  {
+					  alert("osvjezavam bazu");
+					  downloadFile(korisnicko_ime,lozinka);
+					  }
+				  }
+				});
 }		
 
 function fail() {

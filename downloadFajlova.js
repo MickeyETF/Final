@@ -1,15 +1,12 @@
 window.appRootDirName = "prijava_ispita";
-document.addEventListener("online", onOnline, false);
 var korisnicko_ime = window.localStorage.getItem("korisnicko_ime");
 var lozinka = window.localStorage.getItem("lozinka");
+document.addEventListener("online", onOnline, false);
+
 function onOnline()
             {
             		alert("pokusavam update");
 			ProvjeraPristupaServeru();
-			if(korisnicko_ime!=null && lozinka!=null)
-			{
-		    	window.location.replace('pocetna.html');
-		   	}
             }
 			
 function ProvjeraPristupaServeru()
@@ -19,12 +16,12 @@ alert("provjera pristupa serveru");
 		$.ajax({
 		 url:adresa,
 		type:"GET",
-		timeout:15000,
+		timeout:3000,
 		crossDomain: true,
 		dataType:"jsonp",
 		success: function(data)
 			{
-				alert("uspio sam prustupiti");
+			alert("uspio sam prustupiti");
 			if(data!="")
 			{
 			OsvjeziBazu();

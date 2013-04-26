@@ -133,7 +133,7 @@
             			{
             				var json_parsed = eval('(' + ispiti_za_polaganje + ')');
             				var i=1;
-							$.each(data, function(index, item)
+							$.each(json_parsed, function(index, item)
 							{
 								  var id_ispita=item.Ispit.id;
 								 $('#List').append('<tr><td>'+i+'</td><td>'+item.Ispit.naziv+'</td><td><button id="'+id_ispita+'" onclick="Prijava(this.id,this.value)" value="prijava" >prijava</button></td></tr>');

@@ -122,7 +122,7 @@
 			function parsiranjePodataka()
             			{
             				var json_parsed = eval('(' + status_studenta + ')');
-            				$.each(data, function(index, item)
+            				$.each(json_parsed, function(index, item)
 							{
 								 $('#status_studenta').append('<h4>'+ item.Student.ime+" "+"("+item.Student.ime_rod+")"+" "+item.Student.prezime +'</h4>'+'<br/>'+'<h5>Smjer:'+item.Student.smjer+'</h5>'+'<h5>Status:'+item.Student.status+'</h5>'+'<h5>Finansiranje:'+item.Student.finansiranje+'</h5>');
 							});
